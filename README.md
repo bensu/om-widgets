@@ -1,10 +1,10 @@
 # om-widgets
 
-https://github.com/bensu/om-widgets
-
 ## Overview
 
-A thin wrapper around [React Widgets](http://jquense.github.io/react-widgets)
+A thin wrapper around
+[React Widgets](http://jquense.github.io/react-widgets) to try it out
+before packaging it for [cljsjs](http://cljsjs.github.io).
 
 ## License
 
