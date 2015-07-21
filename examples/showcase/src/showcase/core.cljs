@@ -14,15 +14,21 @@
 ;; ====================================================================== 
 ;; App
 
-(def colors ["orange" "red" "blue" "purple"])
+(def colors [{:id 1 :name "orange"}
+             {:id 2 :name "red"}
+             {:id 3 :name "blue"}
+             {:id 4 :name "purple"}])
 
-(def fruits ["orange" "apple" "strawberry" "banana"])
+(def fruits [{:id 1 :name "orange"}
+             {:id 2 :name "apple"}
+             {:id 3 :name "strawberry"}
+             {:id 4 :name "banana"}])
 
 (defonce app-state (atom {:text "Hello World"
-                          :date nil
+                          :date {:inst nil}
                           :colors colors
-                          :color "red"
-                          :fruit "banana"
+                          :color 1 
+                          :fruit 4 
                           :fruits fruits}))
 
 (defn main [data owner]
@@ -31,11 +37,18 @@
     (render [_]
       (dom/div nil
         (dom/h1 nil (:text data))
-        (om/build widgets/date-time-picker data {:opts {:date-key :date}})
-        (om/build widgets/dropdown-list data {:opts {:val-key :color
-                                                     :menu-key :colors}})
-        (om/build widgets/autocomplete data {:opts {:val-key :fruit
-                                                    :menu-key :fruits}})))))
+        (om/build widgets/date-time-picker data {:opts {:date-key [:date :inst]}})
+        (om/build widgets/dropdown-list data 
+          {:opts {:val-key :color
+                  :id-key :id
+                  :label-key :name
+                  :menu-key :colors}})
+        (om/build widgets/autocomplete data
+          {:opts {:val-key :fruit
+                  :id-key :id
+                  :label-key :name
+                  :menu-key :fruits
+                  :props {:open true}}})))))
 
 (om/root main app-state {:target (. js/document (getElementById "app"))})
 
