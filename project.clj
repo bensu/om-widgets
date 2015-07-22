@@ -6,7 +6,7 @@
 
   :dependencies [[org.clojure/clojure "1.7.0"]
                  [org.clojure/clojurescript "0.0-3308" :scope "provided"]
-                 [bensu/react-widgets "2.6.1-0"]
+                 [bensu/react-widgets "2.6.1-1"]
                  [cljsjs/moment "2.9.0-0"]
                  [org.omcljs/om "0.8.8"]]
 
