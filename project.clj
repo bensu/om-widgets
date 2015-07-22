@@ -1,4 +1,4 @@
-(defproject om-widgets "0.1.0-SNAPSHOT"
+(defproject bensu/om-widgets "0.1.0-SNAPSHOT"
   :description "A thin om wrapper around React Widgets"
   :url "https://github.com/bensu/om-widgets"
   :license {:name "MIT"
