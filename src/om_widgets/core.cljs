@@ -14,9 +14,9 @@
 (defn -get [m korks]
   (get-in m (->seq korks)))
 
-(defn find-by-key [menu k label]
+(defn find-by-key [menu k v]
   (->> menu 
-    (filter #(= label (-get % k)))
+    (filter #(= v (-get % k)))
     (first)))
 
 ;; ====================================================================== 

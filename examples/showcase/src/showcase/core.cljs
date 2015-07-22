@@ -27,8 +27,8 @@
 (defonce app-state (atom {:text "Hello World"
                           :date {:inst nil}
                           :colors colors
-                          :color 1 
-                          :fruit 4 
+                          :color {:id nil} 
+                          :fruit {:id 4} 
                           :fruits fruits}))
 
 (defn main [data owner]
@@ -39,12 +39,12 @@
         (dom/h1 nil (:text data))
         (om/build widgets/date-time-picker data {:opts {:date-key [:date :inst]}})
         (om/build widgets/dropdown-list data 
-          {:opts {:val-key :color
+          {:opts {:val-key [:color :id]
                   :id-key :id
                   :label-key :name
                   :menu-key :colors}})
         (om/build widgets/autocomplete data
-          {:opts {:val-key :fruit
+          {:opts {:val-key [:fruit :id]
                   :id-key :id
                   :label-key :name
                   :menu-key :fruits
