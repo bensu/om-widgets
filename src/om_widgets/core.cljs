@@ -101,18 +101,27 @@
                        :props {:open true}}}))"
   [data owner {:keys [menu-key val-key label-key id-key props]}]
   (reify
-    om/IRender
-    (render [_]
+    om/IInitState
+    (init-state [_]
+      {:phrase (-get (or (find-by-key (-get data menu-key) 
+                           id-key (-get data val-key))
+                       {label-key ""})
+                 label-key)})
+    om/IRenderState
+    (render-state [_ {:keys [phrase]}]
       (let [menu (-get data menu-key)
             labels (mapv #(-get % label-key) menu)]
         (js/React.createElement js/ReactWidgets.Combobox
           (-> {:data labels 
+               :value phrase
                :suggest true
+               :onChange (fn [p]
+                           (om/set-state! owner :phrase p))
                :onSelect (fn [new-val]
                            (when (contains? (set labels) new-val)
                              (let [id (-> (find-by-key menu label-key new-val)
                                         (-get id-key))]
                                (om/update! data val-key id))))}
-            (merge props (:props data))
+            (merge props)
             clj->js))))))
 

@@ -27,7 +27,7 @@
 (defonce app-state (atom {:text "Hello World"
                           :date {:inst nil}
                           :colors colors
-                          :color {:id nil} 
+                          :color {:id 2} 
                           :fruit {:id 4} 
                           :fruits fruits}))
 
