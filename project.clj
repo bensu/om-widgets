@@ -7,15 +7,16 @@
   :dependencies [[org.clojure/clojure "1.7.0"]
                  [org.clojure/clojurescript "0.0-3308" :scope "provided"]
                  [bensu/react-widgets "2.6.1-1-SNAPSHOT"]
-                 [cljsjs/moment "2.9.0-0"]
-                 [org.omcljs/om "0.8.8"]]
+                 [cljsjs/moment "2.9.0-1"]
+                 [org.omcljs/om "0.9.0"]]
 
   :plugins [[lein-cljsbuild "1.0.5"]
             [lein-figwheel "0.3.5"]]
 
   :source-paths ["src"]
 
-  :clean-targets ^{:protect false} ["example/resources/public/js/compiled" "target"]
+  :clean-targets ^{:protect false} ["resources/public/js/compiled"
+                                    "target"]
 
   :cljsbuild {
     :builds [{:id "dev"

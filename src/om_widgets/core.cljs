@@ -113,6 +113,6 @@
                              (let [id (-> (find-by-key menu label-key new-val)
                                         (-get id-key))]
                                (om/update! data val-key id))))}
-            (merge props)
+            (merge props (:props data))
             clj->js))))))
 
